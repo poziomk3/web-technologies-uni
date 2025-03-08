@@ -1,29 +1,77 @@
 <?php
 /*
-Plugin Name: My Test Plugins
-Plugin URI: https://example.com/
-Description: A simple WordPress plugin to test Docker setup.
-Version: 1.0
-Author: Your Name
-Author URI: https://example.com/
+Plugin Name: WP Random Ads
+Plugin URI: https://example.com
+Description: Wtyczka do wyświetlania losowego ogłoszenia na początku każdego posta.
+Version: 1.3
+Author: Twoje Imię
+Author URI: https://example.com
 License: GPL2
 */
 
-// Prevent direct access
-if (!defined('ABSPATH')) {
-    exit;
+// Rejestracja własnego typu postu dla ogłoszeń
+function wp_ads_register_post_type()
+{
+    register_post_type('wp_ad', array(
+        'labels' => array(
+            'name' => 'Ogłoszenia',
+            'singular_name' => 'Ogłoszenie',
+            'add_new' => 'Dodaj nowe',
+            'add_new_item' => 'Dodaj nowe ogłoszenie',
+            'edit_item' => 'Edytuj ogłoszenie',
+            'new_item' => 'Nowe ogłoszenie',
+            'view_item' => 'Zobacz ogłoszenie',
+            'search_items' => 'Szukaj ogłoszeń',
+            'not_found' => 'Brak ogłoszeń',
+            'not_found_in_trash' => 'Brak ogłoszeń w koszu',
+        ),
+        'public' => true,
+        'show_in_menu' => true,
+        'supports' => array('title', 'editor'),
+        'menu_icon' => 'dashicons-megaphone',
+    ));
 }
+add_action('init', 'wp_ads_register_post_type');
 
-// Include additional functions
-include_once plugin_dir_path(__FILE__) . 'includes/my-test-functions.php';
+function wp_ads_display_before_content($content)
+{
+    if (!is_single() || !in_the_loop() || !is_main_query())
+        return $content;
 
-// Add a footer message to posts
-function my_test_plugin_footer_message($content) {
-    if (is_single()) {
-        $content .= '<p style="color: red; font-weight: bold; text-align: center;">This is a test message from My Test Plugin.</p>';
-    }
-    return $content;
+    $args = array(
+        'post_type' => 'wp_ad',
+        'posts_per_page' => 1,
+        'orderby' => 'rand',
+    );
+
+    $ads = get_posts($args);
+    if (empty($ads))
+        return $content;
+
+    $selected_ad = reset($ads);
+    $ad_html = '<div class="wp-ads-box">'
+        . '<h3>' . esc_html(get_the_title($selected_ad)) . '</h3>'
+        . wpautop($selected_ad->post_content)
+        . '</div>';
+
+    return $ad_html . $content;
 }
-add_filter('the_content', 'my_test_plugin_footer_message');
+add_filter('the_content', 'wp_ads_display_before_content', 5);
 
-?>
+function wp_ads_custom_css()
+{
+    echo '<style>
+        .wp-ads-box {
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .wp-ads-box h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>';
+}
+add_action('wp_head', 'wp_ads_custom_css');
