@@ -1,19 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Sass Project</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <header>
-        <h1>Welcome to My Sass-Powered Page</h1>
-    </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Circus Spectacular</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-logo">🎪 Circus Show</div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Gallery</a>
+        <a href="#">Tickets</a>
+        <a href="#">Contact</a>
+      </div>
+    </nav>
 
-    <main>
-        <p>This is a simple webpage styled with Sass.</p>
-        <button class="btn-primary">Click Me</button>
-    </main>
-</body>
+    <section class="hero">
+      <h1>Welcome to the Grand Circus!</h1>
+      <p>
+        Experience breathtaking performances, dazzling acrobatics, and magical
+        moments under the big top.
+      </p>
+      <a href="#" class="hero-btn">Get Your Tickets</a>
+    </section>
+
+    <section class="gallery">
+      <div class="gallery-item">
+        <img src="https://picsum.photos/200" alt="Circus Performer" />
+        <div class="overlay">Amazing Acrobatics</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://picsum.photos/200" alt="Clown" />
+        <div class="overlay">Funny Clowns</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://picsum.photos/200" alt="Fire Performer" />
+        <div class="overlay">Breathtaking Fire Show</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://picsum.photos/200" alt="Elephant Show" />
+        <div class="overlay">Magical Animals</div>
+      </div>
+    </section>
+
+    <section class="animated-text-section">
+      <h2>Join the Greatest Show on Earth!</h2>
+      <p>
+        Experience the magic, the thrill, and the excitement of the circus like
+        never before.
+      </p>
+      <div class="button-container">
+        <a href="#" class="button">Buy Tickets</a>
+        <a href="#" class="button-secondary">Learn more</a>
+        <a href="#" class="button-shake">Limited Offer</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-nav">
+        <a href="#">Home</a>
+        <a href="#">Gallery</a>
+        <a href="#">Tickets</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+
+      <p class="copyright">
+        &copy; 2025 The Grand Circus. All rights reserved.
+      </p>
+    </footer>
+  </body>
 </html>

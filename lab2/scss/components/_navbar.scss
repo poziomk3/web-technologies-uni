@@ -1,0 +1,46 @@
+@import "../base/variables";
+@import "../base/mixins";
+
+nav {
+  background: $primary-red;
+  padding: $spacing-md 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: $spacing-md;
+}
+
+.nav-logo {
+  font-family: $title-font;
+  font-size: 2rem;
+  color: $text-light;
+  text-transform: uppercase;
+  padding-left: $spacing-md;
+}
+
+.nav-links {
+  display: flex;
+  gap: $spacing-lg;
+
+  a {
+    color: $text-light;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: $spacing-xs $spacing-md;
+    transition: 0.3s;
+
+    &:hover {
+      color: $secondary-yellow;
+    }
+  }
+}
+
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  color: $text-light;
+  cursor: pointer;
+}

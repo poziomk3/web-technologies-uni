@@ -1,0 +1,49 @@
+@import "../base/variables";
+@import "../base/mixins";
+
+.hero {
+  background: linear-gradient(135deg, $bg-light, $secondary-yellow);
+  color: $text-dark;
+  text-align: center;
+  padding: $spacing-xl;
+  border-radius: $border-radius-lg;
+  margin: $spacing-md auto;
+  max-width: $container-max-width;
+
+  h1 {
+    font-family: $title-font;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: $spacing-md;
+  }
+
+  p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto $spacing-lg;
+    line-height: 1.5;
+  }
+
+  .hero-btn {
+    @include button-style($accent-blue);
+    font-size: 1.2rem;
+    border-radius: $border-radius-md;
+    padding: $spacing-sm $spacing-lg;
+    text-transform: uppercase;
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .hero-btn:hover {
+    animation: bounce 0.5s ease-in-out;
+  }
+}

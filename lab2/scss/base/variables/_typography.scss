@@ -1,0 +1,10 @@
+$main-font: "Poppins", sans-serif;
+$title-font: "Lobster", cursive;
+
+h1,
+h2 {
+  font-family: $title-font;
+}
+body {
+  font-family: $main-font;
+}
