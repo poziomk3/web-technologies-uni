@@ -1,0 +1,42 @@
+// Variables
+$primary-color: #233947;
+$text-color: #ffffff;
+$font-stack: 'Arial', sans-serif;
+
+// Mixin for button styling
+@mixin button-style($bg-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+        background-color: darken($bg-color, 10%);
+    }
+}
+
+// Global styles
+body {
+    font-family: $font-stack;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+}
+
+// Header styles
+header {
+    background-color: $primary-color;
+    padding: 20px;
+    
+    h1 {
+        color: $text-color;
+    }
+}
+
+// Button styles
+.btn-primary {
+    @include button-style($primary-color);
+}
