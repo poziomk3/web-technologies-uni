@@ -1,0 +1,20 @@
+{
+  "name": "lab7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "task1": "nodemon -e js,graphql task1/index.js",
+    "task2": "nodemon -e js,graphql task2/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "graphql-yoga": "^5.13.1",
+    "mongoose": "^8.12.1",
+    "nodemon": "^3.1.9"
+  }
+}

@@ -1,0 +1,44 @@
+query {
+  users {
+    id
+    name
+    email
+    login
+  }
+}
+
+
+query {
+  user(id: "1") {
+    name
+    email
+    todos {
+      title
+      completed
+    }
+  }
+}
+
+
+
+query {
+  todos {
+    id
+    title
+    completed
+    user {
+      name
+    }
+  }
+}
+
+
+
+
+mutation {
+  addUser(name: "John Doe", email: "john@example.com", login: "johndoe") {
+    id
+    name
+    email
+  }
+}
