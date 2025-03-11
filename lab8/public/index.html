@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebSocket Chat</title>
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      #chat-container {
+        width: 60%;
+        margin: auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+      #messages {
+        height: 300px;
+        overflow-y: scroll;
+        border: 1px solid #ddd;
+        padding: 5px;
+      }
+      .message {
+        padding: 5px;
+        border-radius: 5px;
+        margin: 5px 0;
+      }
+      .own-message {
+        text-align: right;
+        background: #d1e7dd;
+      }
+      .other-message {
+        text-align: left;
+        background: #f8d7da;
+      }
+      #typing {
+        font-style: italic;
+        color: grey;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chat-container">
+      <h2>WebSocket Chat</h2>
+      <label for="room">Room:</label>
+      <input type="text" id="room" placeholder="Enter room name" />
+      <label for="username">Nickname:</label>
+      <input type="text" id="username" placeholder="Enter nickname" />
+      <button id="join-btn">Join</button>
+
+      <div id="chat-box" style="display: none">
+        <div id="messages"></div>
+        <p id="typing"></p>
+        <input type="text" id="message" placeholder="Type a message" />
+        <input type="file" id="image-upload" />
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+  </body>
+</html>
