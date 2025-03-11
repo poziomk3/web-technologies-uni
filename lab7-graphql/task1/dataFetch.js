@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// Fetch users from JSONPlaceholder
 export const getRestUsersList = async () => {
   try {
     const response = await axios.get(
@@ -17,7 +16,6 @@ export const getRestUsersList = async () => {
   }
 };
 
-// Fetch todos from JSONPlaceholder
 export const getRestTodosList = async () => {
   try {
     const response = await axios.get(

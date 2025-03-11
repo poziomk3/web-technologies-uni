@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "task1": "nodemon -e js,graphql task1/index.js",
-    "task2": "nodemon -e js,graphql task2/index.js",
+    "task2": "nodemon -e js,graphql task2/index.js; docker-compose up -d; ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
