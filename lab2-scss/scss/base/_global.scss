@@ -1,0 +1,56 @@
+@import "../base/variables";
+@import "../base/mixins";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: $main-font;
+  background-color: $bg-light;
+  color: $text-dark;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: $spacing-lg;
+}
+
+h1 {
+  font-size: 3rem;
+  color: $primary-red;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: $secondary-yellow;
+}
+
+p {
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 10px auto;
+}
+
+a {
+  color: $accent-blue;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+
+  &:hover {
+    color: darken($accent-blue, 10%);
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: bold;
+}

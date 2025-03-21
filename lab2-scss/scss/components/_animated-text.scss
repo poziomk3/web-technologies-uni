@@ -1,0 +1,41 @@
+@import "../base/variables";
+@import "../base/mixins";
+
+.animated-text-section {
+  background: linear-gradient(135deg, $accent-blue, $primary-red);
+  color: $text-light;
+  text-align: center;
+  padding: $spacing-xl;
+  border-radius: $border-radius-lg;
+  margin: $spacing-md auto;
+  max-width: $container-max-width;
+
+  min-height: $spacing-xl * 2;
+
+  h2 {
+    font-family: $title-font;
+    font-size: $spacing-md + 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: $spacing-md;
+    animation: fade-in 2s ease-in-out;
+  }
+
+  p {
+    font-size: ($spacing-sm + 4px); 
+    max-width: $container-width - 20%;
+    margin: 0 auto ($spacing-lg / 2); // Operator: Half of $spacing-lg
+    line-height: 1.5;
+    opacity: 0;
+    animation: slide-up 1s ease-in-out forwards;
+    animation-delay: 0.5s;
+  }
+
+  // Button Container
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-md;
+    margin-top: $spacing-md / 2; // Operator: Half spacing
+  }
+}
