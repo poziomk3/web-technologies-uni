@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Podrożowanie to nasza pasja</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="img/palm.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+  </head>
+  <body>
+    <!-- Start your project here-->
+    <!--Main Navigation-->
+    <header>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+          <!-- Toggle button -->
+          <button
+            data-mdb-collapse-init
+            class="navbar-toggler"
+            type="button"
+            data-mdb-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <!-- Collapsible wrapper -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar brand -->
+            <a class="navbar-brand mt-2 mt-lg-0" href="#">
+              <img
+                src="img/palm.png"
+                height="30"
+                alt="Palm Logo"
+                loading="lazy"
+              />
+            </a>
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#lastTravels">Ostatnie podróże</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#carousel_with_cards">Nasz zespół</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#location">Lokalizacja</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Kontakt</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">FAQ</a>
+              </li>
+            </ul>
+            <!-- Left links -->
+          </div>
+          <!-- Collapsible wrapper -->
+
+          <!-- Right elements -->
+          <div class="d-flex align-items-center">
+            <!-- Icon -->
+            <a class="text-reset me-3" href="#">
+              <i class="fas fa-shopping-cart"></i>
+            </a>
+
+            <!-- Notifications -->
+            <div class="dropdown">
+              <a
+                data-mdb-dropdown-init
+                class="text-reset me-3 dropdown-toggle hidden-arrow"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                aria-expanded="false"
+              >
+                <i class="fas fa-bell"></i>
+                <span class="badge rounded-pill badge-notification bg-danger">1</span>
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <a class="dropdown-item" href="#">Some news</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Another news</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </div>
+            <!-- Avatar -->
+            <div class="dropdown">
+              <a
+                data-mdb-dropdown-init
+                class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                href="#"
+                id="navbarDropdownMenuAvatar"
+                role="button"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                  class="rounded-circle"
+                  height="25"
+                  alt="Black and White Portrait of a Man"
+                  loading="lazy"
+                />
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="navbarDropdownMenuAvatar"
+              >
+                <li>
+                  <a class="dropdown-item" href="#">My profile</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Settings</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+      </nav>
+      <!-- Navbar -->
+      <div class="bg-image">
+        <img src="img/bg.jpeg" class="w-100"/>
+        <div class="mask" style="background-color: hsla(0, 0%, 0%, 0.6)">
+          <div class="d-flex justify-content-center align-items-center h-100 text-center">
+            <div class="col-md-10">
+              <!-- Heading -->
+              <h2 class="fw-normal text-white mb-4 mt-5">Podróżowanie</h2>
+              <!-- Divider -->
+              <hr class="hr-light text-white">
+              <!-- Description -->
+              <h4 class="text-white fw-light mp-5">Podróże to jedyna rzecz, na którą wydajesz pieniądze, a stajesz się bogatszy.</h4>
+              <button type="button" class="btn btn-outline-white text-white fw-light"><a class="text-white fw-light"href="#lastTravels">Zobacz ostatnie podróże</a></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </header>
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    <main class="mt-5">
+      <div class="container">
+
+        <!--Section: LastTravels-->
+      
+        <section id="lastTravels" class="text-center">
+          <!--Grid row-->
+          <h2 class="text-center pb-5">Nasze ostatnie podróże</h2>
+          <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <img src="img/trip1.jpg" class="img-fluid" alt="">
+            <h4 class="my-4 font-weight-bold">Podróż do Kanady</h4>
+            <p class="grey-text">
+              Przepiękne lasy, jeziora i góry Parku Narodowego Banff zachwycają o każdej porze roku. 
+              Zimą można tu szusować na nartach, a latem podziwiać turkusowe jezioro Moraine.
+            </p>
+          </div>
+          <!--Grid column-->
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <img src="img/trip2.jpg" class="img-fluid" alt="">
+            <h4 class="my-4 font-weight-bold">Podróż do Afryki</h4>
+            <p class="grey-text">
+              Safari w Kenii to niezapomniana przygoda wśród dzikiej przyrody i malowniczych krajobrazów sawanny. 
+              Spotkanie z Wielką Piątką w Parku Narodowym Masai Mara to spełnienie marzeń każdego podróżnika.
+            </p>
+          </div>
+          <!--Grid column-->
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <img src="img/trip3.jpg" class="img-fluid" alt="">
+            <h4 class="my-4 font-weight-bold">Wycieczka w góry</h4>
+            <p class="grey-text">
+              Wędrówka po Tatrach oferuje zapierające dech w piersiach widoki i bliskość dzikiej natury. 
+              Wspinaczka na Rysy to wyzwanie, ale satysfakcja na szczycie jest nie do opisania.
+            </p>
+          </div>
+          <!--Grid column-->
+          </div>
+          <!--Grid row-->
+          <!--Grid row-->
+          <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <img src="img/trip4.jpg" class="img-fluid" alt="">
+            <h4 class="my-4 font-weight-bold">Fuerteventura</h4>
+            <p class="grey-text">
+              Ta wulkaniczna wyspa Wysp Kanaryjskich słynie z szerokich, złotych plaż i idealnych warunków do surfingu. 
+              Wiatr i ocean tworzą raj dla miłośników sportów wodnych.
+            </p>
+          </div>
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <img src="img/trip5.jpg" class="img-fluid" alt="">
+            <h4 class="my-4 font-weight-bold">Podróż do Japonii</h4>
+            <p class="grey-text">
+              Wspinaczka na świętą górę Japonii to wyjątkowe doświadczenie, szczególnie o wschodzie słońca. 
+              Widok z wysokości 3776 metrów zapiera dech i na długo pozostaje w pamięci.
+            </p>
+          </div>
+          <!--Grid column-->
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <img src="img/trip6.jpg" class="img-fluid" alt="">
+            <h4 class="my-4 font-weight-bold">Podróż do Stambułu</h4>
+            <p class="grey-text">
+              Miasto na styku Europy i Azji urzeka bazarami, meczetami i egzotyczną atmosferą. 
+              Spacer po dzielnicy Sultanahmet to podróż przez wieki historii i kultury.
+            </p>
+          </div>
+          <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </section>
+        <!--Section: LastTravels-->
+
+        <hr class="my-5">
+
+        <!-- Section: Carousel with cards -->
+        <section id="carousel_with_cards">
+          <h2 class="text-center mb-5">Poznaj nasz zespół</h2>
+          <div id="carouselExample" class="carousel slide bg-dark text-light py-5">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <!--card1-->
+                <div class="card mx-auto" style="width: 18rem;">
+                  <img src="img/max.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Max</h5>
+                    <p class="card-text">Zajmuje się obsługą klienta i zawsze dba o to, by każda podróż przebiegła bez problemów, oferując profesjonalną pomoc na każdym etapie.</p>
+                    <button id="phoneButton1" class="btn btn-primary" onclick="showPhoneNumber('phoneButton1')">Wyświetl numer</button> 
+                  </div>
+                </div>
+                <!--end card1-->
+              </div>
+              <div class="carousel-item">
+                <!--card2-->
+                <div class="card mx-auto" style="width: 18rem;">
+                  <img src="img/ania.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Ania</h5>
+                    <p class="card-text">Jest naszą specjalistką od organizacji wycieczek i zawsze służy pomocą przy planowaniu wymarzonej podróży.</p>
+                    <button id="phoneButton2" class="btn btn-primary" onclick="showPhoneNumber('phoneButton2')">Wyświetl numer</button> 
+                  </div>
+                </div>
+                <!--end card2-->
+              </div>
+              <div class="carousel-item">
+                <!--card3-->
+                <div class="card mx-auto" style="width: 18rem;">
+                  <img src="img/adam.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Adam</h5>
+                    <p class="card-text">Ma nieocenioną wiedzę o egzotycznych destynacjach, dzięki czemu pomaga klientom w wyborze najpiękniejszych miejsc na wakacje.</p>
+                    <button id="phoneButton3" class="btn btn-primary" onclick="showPhoneNumber('phoneButton3')">Wyświetl numer</button> 
+                  </div>
+                </div>
+                <!--end card3-->
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </section>
+        <!-- Section: Carousel with cards -->
+
+        <hr class="my-5">
+
+        <!--Section: Location-->
+        <section id="location">
+          <div class="row my-5">
+            <h2 class="text-center">Lokalizacja naszej firmy</h2>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2505.0476048666255!2d17.059307975881957!3d51.10758183983361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fe82a7836289b%3A0xb8f93f04c5c8d70f!2sPolitechnika%20Wroc%C5%82awska!5e0!3m2!1spl!2spl!4v1742127704770!5m2!1spl!2spl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </section>
+        <!--Section: Location-->
+
+        <hr class="my-5">
+
+         <!-- Section: Text + Image -->
+         <section class="row mb-5">
+          <div class="col-md-3">
+              <img src="img/plaza.jpg" class="img-fluid rounded" alt="Zdjęcie">
+          </div>
+          <div class="col-md-9">
+              <p>To zdjęcie ukazuje niesamowity krajobraz z plaży, gdzie na tle błękitnego nieba rosną majestatyczne palmy, a ocean mieni się w słońcu. Piasek jest miękki i biały, a widok zapiera dech w piersiach. Palmy rozpościerają swoje liście, tworząc naturalny cień, idealny na relaks w tropikalnym raju. W tle widać spokojne fale, które łagodnie uderzają o brzeg, tworząc spokojną atmosferę. Cała sceneria jest jak z pocztówki, gdzie każdy szczegół emanuje naturalnym pięknem. Powietrze jest ciepłe, wilgotne i przesycone zapachem oceanu, a wiatr lekko kołysze liśćmi palm. To miejsce wydaje się być ukrytym skarbem, idealnym do ucieczki od codziennego zgiełku. Zdecydowanie jedno z tych miejsc, które zostają w pamięci na zawsze. Ten widok sprawia, że czujesz się częścią czegoś większego, czegoś, co ma moc zrelaksowania i naładowania energią. To niezapomniane doświadczenie, które na zawsze pozostanie w sercu, jako przypomnienie o nieskończonym pięknie natury.</p>
+          </div>
+        </section>
+        <!-- Section: Text + Image -->
+
+        <!-- Section: Quotation -->
+        <section class="mb-5">
+            <blockquote class="blockquote text-center">
+                <p class="mb-5">"Wielką podróż odbywają ci, którzy mają odwagę ruszyć w nieznane"</p>
+                <footer class="blockquote-footer"> J.R.R. Tolkien</footer>
+            </blockquote>
+        </section>
+        <!-- Section: Quotation -->
+
+
+        <hr class="my-5">
+
+        <!--Section: Contact-->
+        <section id="contact">
+          <div class="row justify-content-center my-10">
+            <h2 class="text-center">Skontaktuj się z nami</h2>
+            <form style="width: 26rem;">
+              <!-- Name input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input type="text" id="form4Example1" class="form-control" />
+                <label class="form-label" for="form4Example1">Imię</label>
+              </div>
+            
+              <!-- Email input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input type="email" id="form4Example2" class="form-control" />
+                <label class="form-label" for="form4Example2">Email</label>
+              </div>
+            
+              <!-- Message input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <textarea class="form-control" id="form4Example3" rows="4"></textarea>
+                <label class="form-label" for="form4Example3">Wiadomość</label>
+              </div>
+            
+              <!-- Checkbox -->
+              <div class="form-check d-flex justify-content-center mb-4">
+                <input
+                  class="form-check-input me-2"
+                  type="checkbox"
+                  value=""
+                  id="form4Example4"
+                  checked
+                />
+                <label class="form-check-label" for="form4Example4">
+                  Wyślij mi kopię tej wiadomości
+                </label>
+              </div>
+            
+              <!-- Submit button -->
+              <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4">Wyślij</button>
+            </form>
+          </div>
+        </section>
+        <!--Section: Contact-->
+
+        <hr class="my-5">
+        
+        <!--  Section: travel chart -->
+        <section class="mb-5 text-center">
+          <h2>Sprawdź co jest teraz popularne</h2>
+          <canvas id="travelChart" height="100px"></canvas>
+      </section>
+      <!--  Section: travel chart -->
+      
+      <hr class="my-5">
+
+      <!-- Section: FAQ-->
+      <section id="FAQ" class="pb-5">
+        <h2 class="text-center pb-5">Często zadawane pytania</h2>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                Jakie dokumenty są potrzebne do podróży za granicę?
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">W zależności od kraju docelowego, będziesz potrzebować dowodu osobistego, paszportu lub wizy (jeśli jest wymagana).</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                Czy muszę wykupić ubezpieczenie podróżne?
+              </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Choć nie jest to obowiązkowe, wykupienie ubezpieczenia podróżnego jest bardzo zalecane, aby zabezpieczyć się na wypadek nieprzewidzianych sytuacji, takich jak wypadki, choroby czy utrata bagażu.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                Jakie są najlepsze miejsca na podróżowanie solo?
+              </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Wiele osób wybiera podróże solo do krajów takich jak Japonia, Islandia, Nowa Zelandia czy Portugalia, które są uważane za bezpieczne, łatwe do zwiedzania i pełne atrakcji turystycznych.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Section FAQ-->
+
+      </div>
+    </main>
+    <!--Main layout-->
+
+    <!-- Footer -->
+    <footer class="text-center bg-dark text-light py-5">
+      <!-- Section: Social media -->
+      <section class="d-flex justify-content-center">
+        <div>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </section>
+      <!-- Section: Social media -->
+      <!-- Copyright -->
+      <div class="text-center">
+        © 2025 Copyright
+      </div>
+      <!-- Copyright -->
+
+    </footer>
+    <!--Footer-->
+
+    <!-- End your project here-->
+
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.umd.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+
+  </body>
+</html>
