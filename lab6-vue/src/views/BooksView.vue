@@ -103,7 +103,7 @@ const confirmDelete = () => {
   if (!selectedBookToDelete.value) return
 
   deleteMutation.mutate(selectedBookToDelete.value.id, {
-    onSuccess: () => {
+    onSettled: () => {
       showDeleteModal.value = false
       selectedBookToDelete.value = null
       refetch()

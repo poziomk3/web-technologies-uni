@@ -87,6 +87,7 @@ const onSaved = () => {
   refetch()
 }
 
+// 🗑 Deletion
 const showDeleteModal = ref(false)
 const selectedAuthorToDelete = ref<Author | null>(null)
 const deleteMutation = useDeleteAuthor()
@@ -99,7 +100,7 @@ const removeAuthor = (author: Author) => {
 const confirmDelete = () => {
   if (!selectedAuthorToDelete.value) return
   deleteMutation.mutate(selectedAuthorToDelete.value.id, {
-    onSuccess: () => {
+    onSettled: () => {
       showDeleteModal.value = false
       selectedAuthorToDelete.value = null
       refetch()
