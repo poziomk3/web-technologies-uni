@@ -1,20 +1,46 @@
 package com.kd.lab5_spring.service;
 
+import com.kd.dto.*;
+import com.kd.lab5_spring.mapper.AuthorMapper;
+import com.kd.lab5_spring.repository.AuthorRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import pl.edu.pwr.ztw.books.entity.Author;
-import pl.edu.pwr.ztw.books.exceptions.InvalidObjectException;
-import pl.edu.pwr.ztw.books.exceptions.ObjectNotFoundException;
+import java.util.stream.Collectors;
 
-import java.util.Collection;
+@Service
+@RequiredArgsConstructor
+public class AuthorService {
 
-public interface AuthorService {
-    Collection<Author> getAllAuthors();
+    private final AuthorRepository authorRepository;
+    private final AuthorMapper authorMapper;
 
-    Author getAuthor(int id) throws ObjectNotFoundException;
+    public PaginatedAuthorsDTO getAllAuthors(int page, int pageSize) {
+        var authors = authorRepository.findAll(page, pageSize);
+        var total = authorRepository.count();
 
-    Author addAuthor(Author author) throws InvalidObjectException;
+        return new PaginatedAuthorsDTO()
+                .items(authors.stream().map(authorMapper::toDTO).collect(Collectors.toList()))
+                .total(total);
+    }
 
-    Author updateAuthor(Author author) throws ObjectNotFoundException, InvalidObjectException;
+    public AuthorDTO getAuthor(Long id) {
+        return authorRepository.findById(id)
+                .map(authorMapper::toDTO)
+                .orElseThrow(() -> new RuntimeException("Author not found"));
+    }
 
-    void deleteAuthor(int id) throws ObjectNotFoundException;
+    public AuthorDTO createAuthor(AuthorRequestDTO request) {
+        var saved = authorRepository.save(authorMapper.toModel(request));
+        return authorMapper.toDTO(saved);
+    }
+
+    public AuthorDTO updateAuthor(Long id, AuthorRequestDTO request) {
+        var updated = authorRepository.update(id, authorMapper.fromRequestDTO(id, request));
+        return authorMapper.toDTO(updated);
+    }
+
+    public boolean deleteAuthor(Long id) {
+        return authorRepository.delete(id);
+    }
 }

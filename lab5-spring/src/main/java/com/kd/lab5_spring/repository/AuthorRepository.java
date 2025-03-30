@@ -1,42 +1,54 @@
 package com.kd.lab5_spring.repository;
 
+import com.kd.lab5_spring.config.Seeding;
+import com.kd.lab5_spring.model.Author;
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
-import pl.edu.pwr.ztw.books.entity.Author;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 
 @Repository
 public class AuthorRepository {
 
-    private final List<Author> authorsRepo = new ArrayList<>();
+    private final Map<Long, Author> authors = new HashMap<>();
+    private final AtomicLong idCounter = new AtomicLong(1);
 
-    public AuthorRepository() {
-        authorsRepo.add(new Author(1, "Henryk", "Sienkiewicz"));
-        authorsRepo.add(new Author(2, "Bolesław", "Prus"));
-        authorsRepo.add(new Author(3, "Stanisław", "Lem"));
-        authorsRepo.add(new Author(4, "Wisława", "Szymborska"));
-        authorsRepo.add(new Author(5, "Czesław", "Miłosz"));
+    @PostConstruct
+    public void init() {
+        Seeding.seedAuthors(this);
     }
 
-    public List<Author> findAll() {
-        return new ArrayList<>(authorsRepo);
+    public List<Author> findAll(int page, int pageSize) {
+        return authors.values().stream()
+                .skip((long) (page - 1) * pageSize)
+                .limit(pageSize)
+                .collect(Collectors.toList());
     }
 
-    public Optional<Author> findById(int id) {
-        return authorsRepo.stream()
-                .filter(a -> a.getId() == id)
-                .findFirst();
+    public int count() {
+        return authors.size();
+    }
+
+    public Optional<Author> findById(Long id) {
+        return Optional.ofNullable(authors.get(id));
     }
 
     public Author save(Author author) {
-        author.setId(authorsRepo.get(authorsRepo.size() - 1).getId() + 1);
-        authorsRepo.add(author);
+        Long id = idCounter.getAndIncrement();
+        author.setId(id);
+        authors.put(id, author);
         return author;
     }
 
-    public void deleteById(int id) {
-        authorsRepo.removeIf(a -> a.getId() == id);
+    public Author update(Long id, Author author) {
+        author.setId(id);
+        authors.put(id, author);
+        return author;
+    }
+
+    public boolean delete(Long id) {
+        return authors.remove(id) != null;
     }
 }
