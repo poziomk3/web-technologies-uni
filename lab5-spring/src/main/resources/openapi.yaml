@@ -196,6 +196,81 @@ paths:
         '204':
           description: Author deleted
 
+  /borrowings:
+    get:
+      tags: [ Borrowing ]
+      summary: Get list of all borrowings
+      parameters:
+        - in: query
+          name: page
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: pageSize
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of borrowings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedBorrowingsDTO'
+
+    post:
+      tags: [ Borrowing ]
+      summary: Borrow a book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BorrowingRequestDTO'
+      responses:
+        '201':
+          description: Book borrowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BorrowingDTO'
+
+  /borrowings/{id}:
+    get:
+      tags: [ Borrowing ]
+      summary: Get borrowing status by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Borrowing status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BorrowingDTO'
+
+    put:
+      tags: [ Borrowing ]
+      summary: Update borrowing status (e.g., return a book)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Borrowing status updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BorrowingDTO'
+
 components:
   schemas:
     BookDTO:
@@ -289,3 +364,40 @@ components:
             $ref: '#/components/schemas/AuthorDTO'
         total:
           type: integer
+    BorrowingDTO:
+      type: object
+      required: [ id, id_book ]
+      properties:
+        id:
+          type: integer
+        id_book:
+          type: integer
+        borrow_date:
+          type: string
+          format: date
+        return_date:
+          type: string
+          format: date
+        status:
+          type: string
+          enum: [ borrowed, returned ]
+
+    BorrowingRequestDTO:
+      type: object
+      required: [ id_book ]
+      properties:
+        id_book:
+          type: integer
+
+
+    PaginatedBorrowingsDTO:
+      type: object
+      required: [ items, total ]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BorrowingDTO'
+        total:
+          type: integer
+
