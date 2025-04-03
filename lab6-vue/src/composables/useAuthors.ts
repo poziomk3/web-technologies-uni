@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/vue-query'
 import { fetchAuthors, createAuthor, updateAuthor, deleteAuthor, fetchAuthor } from '@/api/authors'
-import type { Author } from '@/types/Authors'
 import type { Ref } from 'vue'
+import type { Author } from '@/openapi/types'
 
 const QUERY_KEY = ['authors']
 

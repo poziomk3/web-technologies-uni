@@ -23,7 +23,7 @@
 import { h } from 'vue'
 import { NButton } from 'naive-ui'
 import type { DataTableColumns } from 'naive-ui'
-import type { Book } from '@/types/Books'
+import type { Book } from '@/openapi/types'
 const props = defineProps<{
   books: Book[]
   total: number

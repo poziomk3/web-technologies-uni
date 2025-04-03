@@ -1,4 +1,4 @@
-import type { Author, PaginatedAuthors } from '@/types/Authors'
+import type { Author, PaginatedAuthors } from "@/openapi/types"
 
 let MOCK_AUTHORS: Author[] = [
   { id: 1, name: 'Stanisław Lem', biography: 'Autor SF', birthDate: '1921-09-12' },

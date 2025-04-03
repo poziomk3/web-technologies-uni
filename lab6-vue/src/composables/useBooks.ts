@@ -1,5 +1,5 @@
 import { createBook, deleteBook, fetchBook, fetchBooks, updateBook } from '@/api/books'
-import type { Book } from '@/types/Books'
+import type { Book } from '@/openapi/types'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import type { Ref } from 'vue'
 

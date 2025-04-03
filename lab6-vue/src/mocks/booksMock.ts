@@ -1,4 +1,4 @@
-import type { Book, PaginatedBooks } from '@/types/Books'
+import type { Book, PaginatedBooks } from '@/openapi/types'
 
 let MOCK_BOOKS: Book[] = [
   {

@@ -46,12 +46,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { Author } from '@/types/Authors'
 import { useAuthors, useDeleteAuthor } from '@/composables/useAuthors'
 import AuthorDetails from '@/components/author/AuthorDetails.vue'
 import AuthorTable from '@/components/author/AuthorTable.vue'
 import AuthorForm from '@/components/author/AuthorForm.vue'
 import ConfirmDeleteModal from '@/components/commons/ConfirmDeleteModal.vue'
+import type { Author } from '@/openapi/types'
 
 const detailsAuthorId = ref<number | null>(null)
 
@@ -63,12 +63,10 @@ const viewAuthor = (author: Author) => {
     detailsAuthorId.value = author.id
   }
 }
-// 🔁 Pagination
 const page = ref(1)
-const pageSize = 10
+const pageSize = 2
 const { data: authors, isLoading, refetch } = useAuthors(page, pageSize)
 
-// ✏️ Form
 const showForm = ref(false)
 const formAuthorId = ref<number | null>(null)
 
@@ -87,7 +85,6 @@ const onSaved = () => {
   refetch()
 }
 
-// 🗑 Deletion
 const showDeleteModal = ref(false)
 const selectedAuthorToDelete = ref<Author | null>(null)
 const deleteMutation = useDeleteAuthor()

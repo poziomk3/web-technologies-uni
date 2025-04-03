@@ -48,7 +48,6 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import type { Book } from '@/types/Books'
 import { useBooks, useDeleteBook } from '@/composables/useBooks'
 import { useAuthors } from '@/composables/useAuthors'
 
@@ -56,9 +55,10 @@ import BookTable from '@/components/books/BookTable.vue'
 import BookForm from '@/components/books/BookForm.vue'
 import BookDetails from '@/components/books/BookDetails.vue'
 import ConfirmDeleteModal from '@/components/commons/ConfirmDeleteModal.vue'
+import type { Book } from '@/openapi/types'
 
 const page = ref(1)
-const pageSize = 10
+const pageSize = 2
 const { data: books, isLoading, refetch } = useBooks(page, pageSize)
 const { data: authorsData } = useAuthors(ref(1), 1000)
 

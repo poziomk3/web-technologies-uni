@@ -1,4 +1,4 @@
-import type { Book, PaginatedBooks } from '@/types/Books'
+import type { Book, PaginatedBooks } from '@/openapi/types'
 import { mockFetchBooks, mockCreateBook, mockUpdateBook, mockDeleteBook } from '../mocks/booksMock'
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL

@@ -4,7 +4,7 @@ import {
   mockFetchAuthors,
   mockUpdateAuthor,
 } from '@/mocks/authorsMock'
-import type { Author, PaginatedAuthors } from '@/types/Authors'
+import type { Author, PaginatedAuthors } from '@/openapi/types'
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true'
