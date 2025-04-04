@@ -1,0 +1,403 @@
+openapi: 3.0.3
+info:
+  title: Library API
+  description: API for managing books, authors and loans
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080
+
+paths:
+  /books:
+    get:
+      tags: [Book]
+      summary: Get paginated list of books
+      parameters:
+        - in: query
+          name: page
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: pageSize
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of books
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedBooksDTO'
+
+    post:
+      tags: [Book]
+      summary: Create a new book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookRequestDTO'
+      responses:
+        '201':
+          description: Book created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookDTO'
+
+  /books/{id}:
+    get:
+      tags: [Book]
+      summary: Get a book by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Book found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookDTO'
+
+    put:
+      tags: [Book]
+      summary: Update a book
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookRequestDTO'
+      responses:
+        '200':
+          description: Book updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookDTO'
+
+    delete:
+      tags: [Book]
+      summary: Delete a book
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Book deleted
+
+  /authors:
+    get:
+      tags: [Author]
+      summary: Get paginated list of authors
+      parameters:
+        - in: query
+          name: page
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: pageSize
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of authors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAuthorsDTO'
+
+    post:
+      tags: [Author]
+      summary: Create a new author
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorRequestDTO'
+      responses:
+        '201':
+          description: Author created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorDTO'
+
+  /authors/{id}:
+    get:
+      tags: [Author]
+      summary: Get an author by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Author found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorDTO'
+
+    put:
+      tags: [Author]
+      summary: Update an author
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorRequestDTO'
+      responses:
+        '200':
+          description: Author updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorDTO'
+
+    delete:
+      tags: [Author]
+      summary: Delete an author
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Author deleted
+
+  /borrowings:
+    get:
+      tags: [ Borrowing ]
+      summary: Get list of all borrowings
+      parameters:
+        - in: query
+          name: page
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: pageSize
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of borrowings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedBorrowingsDTO'
+
+    post:
+      tags: [ Borrowing ]
+      summary: Borrow a book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BorrowingRequestDTO'
+      responses:
+        '201':
+          description: Book borrowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BorrowingDTO'
+
+  /borrowings/{id}:
+    get:
+      tags: [ Borrowing ]
+      summary: Get borrowing status by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Borrowing status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BorrowingDTO'
+
+    put:
+      tags: [ Borrowing ]
+      summary: Update borrowing status (e.g., return a book)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Borrowing status updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BorrowingDTO'
+
+components:
+  schemas:
+    BookDTO:
+      type: object
+      required: [id, title, authorId, publicationDate]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        authorId:
+          type: string
+        publicationDate:
+          type: string
+          format: date
+        genre:
+          type: string
+        description:
+          type: string
+        coverImage:
+          type: string
+        rating:
+          type: number
+          format: float
+
+    BookRequestDTO:
+      type: object
+      required: [title, authorId, publicationDate]
+      properties:
+        title:
+          type: string
+        authorId:
+          type: string
+        publicationDate:
+          type: string
+          format: date
+        genre:
+          type: string
+        description:
+          type: string
+        coverImage:
+          type: string
+        rating:
+          type: number
+          format: float
+
+    PaginatedBooksDTO:
+      type: object
+      required: [items, total]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookDTO'
+        total:
+          type: integer
+
+    AuthorDTO:
+      type: object
+      required: [id, name]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        birthDate:
+          type: string
+          format: date
+        biography:
+          type: string
+
+    AuthorRequestDTO:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+        birthDate:
+          type: string
+          format: date
+        biography:
+          type: string
+
+    PaginatedAuthorsDTO:
+      type: object
+      required: [items, total]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthorDTO'
+        total:
+          type: integer
+    BorrowingDTO:
+      type: object
+      required: [ id, id_book ]
+      properties:
+        id:
+          type: integer
+        id_book:
+          type: integer
+        borrow_date:
+          type: string
+          format: date
+        return_date:
+          type: string
+          format: date
+        status:
+          type: string
+          enum: [ borrowed, returned ]
+
+    BorrowingRequestDTO:
+      type: object
+      required: [ id_book ]
+      properties:
+        id_book:
+          type: integer
+
+
+    PaginatedBorrowingsDTO:
+      type: object
+      required: [ items, total ]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BorrowingDTO'
+        total:
+          type: integer
+
