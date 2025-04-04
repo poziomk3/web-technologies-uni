@@ -19,7 +19,5 @@ public interface BorrowingMapper {
     @Mapping(target = "id", ignore = true)
     Borrowing toModel(BorrowingRequestDTO dto);
 
-    @Mapping(target = "id", source = "id")
-    Borrowing fromRequestDTO(Long id, BorrowingRequestDTO dto);
 
 }

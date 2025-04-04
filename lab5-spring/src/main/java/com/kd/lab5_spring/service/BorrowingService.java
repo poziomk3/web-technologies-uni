@@ -32,6 +32,7 @@ public class BorrowingService {
     }
 
     public BorrowingDTO createBorrowing(BorrowingRequestDTO request) {
+
         var saved = borrowingRepository.save(borrowingMapper.toModel(request));
         return borrowingMapper.toDTO(saved);
     }

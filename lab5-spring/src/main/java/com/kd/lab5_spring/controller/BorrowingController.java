@@ -15,7 +15,7 @@ public class BorrowingController implements BorrowingApi {
     private final BorrowingService borrowingService;
 
     @Override
-    public ResponseEntity<PaginatedBorrowingsDTO> borrowingsGet(Integer page, Integer pageSize){
+    public ResponseEntity<PaginatedBorrowingsDTO> borrowingsGet(Integer page, Integer pageSize) {
         PaginatedBorrowingsDTO result = borrowingService.getAllBorrowings(page, pageSize);
         return ResponseEntity.ok(result);
     }
@@ -29,8 +29,12 @@ public class BorrowingController implements BorrowingApi {
 
     @Override
     public ResponseEntity<BorrowingDTO> borrowingsPost(BorrowingRequestDTO borrowingRequestDTO) {
-        BorrowingDTO created = borrowingService.createBorrowing(borrowingRequestDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+        try {
+            BorrowingDTO created = borrowingService.createBorrowing(borrowingRequestDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body(created);
+        } catch (IllegalStateException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     @Override

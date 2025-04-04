@@ -3,7 +3,9 @@ package com.kd.lab5_spring.repository;
 import com.kd.lab5_spring.model.Author;
 import com.kd.lab5_spring.model.Borrowing;
 import com.kd.lab5_spring.model.BorrowingStatus;
+import com.kd.lab5_spring.service.BorrowingService;
 import org.springframework.stereotype.Repository;
+
 import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
@@ -31,6 +33,14 @@ public class BorrowingRepository {
     }
 
     public Borrowing save(Borrowing borrowing) {
+        boolean isAlreadyBorrowed = borrowings.values().stream()
+                .anyMatch(b -> Objects.equals(b.getIdBook(), borrowing.getIdBook()) &&
+                        b.getStatus() == BorrowingStatus.BORROWED);
+
+        if (isAlreadyBorrowed) {
+            throw new IllegalStateException("Book is already borrowed.");
+        }
+
         long id = idCounter.getAndIncrement();
         borrowing.setId(id);
         borrowing.setBorrowDate(LocalDate.now()); // Ustawienie daty wypożyczenia
@@ -47,6 +57,7 @@ public class BorrowingRepository {
         }
         return borrowing;
     }
+
     public boolean existsById(Long id) {
         return borrowings.containsKey(id);
     }
