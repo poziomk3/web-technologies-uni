@@ -25,6 +25,14 @@
         >
           Autorzy
         </RouterLink>
+        <RouterLink
+          to="/borrowings"
+          class="text-gray-600 hover:text-blue-600 transition"
+          active-class="text-blue-600 font-semibold"
+          exact-active-class="border-b-2 border-blue-600"
+        >
+          Wypożyczenia
+        </RouterLink>
       </nav>
     </header>
 

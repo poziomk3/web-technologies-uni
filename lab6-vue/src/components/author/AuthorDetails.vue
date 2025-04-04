@@ -1,7 +1,7 @@
 <template>
     <n-modal
       v-model:show="visible"
-      title="📘 Szczegóły autora"
+      title="Szczegóły autora"
       preset="card"
       class="max-w-md"
     >
@@ -24,7 +24,7 @@
   
   <script setup lang="ts">
   import { ref } from 'vue'
-  import { useAuthor } from '@/composables/useAuthors' // ✅ nowy hook
+  import { useAuthor } from '@/composables/useAuthors' 
   
   const props = defineProps<{
     authorId: number

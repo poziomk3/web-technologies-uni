@@ -1,7 +1,7 @@
 <template>
   <n-modal
     v-model:show="visible"
-    title="🖊️ Autor"
+    title="Autor"
     preset="dialog"
     class="max-w-md"
     :closable="false"
