@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebSocket Chat with Alpine.js</title>
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      #chat-container {
+        width: 60%;
+        margin: auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+      #messages {
+        height: 300px;
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        padding: 5px;
+      }
+      .message {
+        padding: 5px;
+        border-radius: 5px;
+        margin: 5px 0;
+      }
+      .own-message {
+        text-align: right;
+        background: #d1e7dd;
+      }
+      .other-message {
+        text-align: left;
+        background: #f8d7da;
+      }
+      #typing {
+        font-style: italic;
+        color: grey;
+      }
+      #user-list {
+        border: 1px solid #ddd;
+        padding: 5px;
+        margin-top: 10px;
+        background: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chat-container" x-data="chatApp()">
+      <h2>WebSocket Chat</h2>
+
+      <template x-if="!joined">
+        <div>
+          <input type="text" x-model="room" placeholder="Room Name" />
+          <input type="text" x-model="username" placeholder="Nickname" />
+          <button @click="joinRoom">Join</button>
+        </div>
+      </template>
+
+      <template x-if="joined">
+        <div id="chat-box">
+          <h3>Room: <span x-text="room"></span></h3>
+          <button @click="leaveRoom">Disconnect</button>
+
+          <div id="user-list">
+            <h4>Active Users</h4>
+            <ul>
+              <template x-for="user in users" :key="user.id">
+                <li x-text="user.username"></li>
+              </template>
+            </ul>
+          </div>
+
+          <div id="messages">
+            <template x-for="message in messages" :key="message.id">
+              <div
+                class="message"
+                :class="message.own ? 'own-message' : 'other-message'"
+              >
+                <strong x-text="message.user"></strong>:
+                <span x-html="message.text"></span>
+                <br />
+                <small x-text="message.time"></small>
+              </div>
+            </template>
+          </div>
+
+          <p id="typing" x-text="typing"></p>
+          <input
+            type="text"
+            x-model="newMessage"
+            @input="notifyTyping"
+            placeholder="Type a message"
+          />
+          <input type="file" @change="uploadImage" />
+          <button @click="sendMessage">Send</button>
+        </div>
+      </template>
+    </div>
+
+    <script>
+      function chatApp() {
+        return {
+          socket: null,
+          username: "",
+          room: "",
+          joined: false,
+          messages: [],
+          newMessage: "",
+          typing: "",
+          users: [], // Store active users
+
+          joinRoom() {
+            if (!this.username || !this.room) return;
+            this.socket = io();
+            this.socket.emit("joinRoom", {
+              username: this.username,
+              room: this.room,
+            });
+            this.joined = true;
+
+            this.socket.on("message", (data) => {
+              this.addMessage(data.user, data.text, data.time);
+            });
+
+            this.socket.on("imageMessage", (data) => {
+              this.addMessage(
+                data.user,
+                `<img src='${data.image}' width='200'>`,
+                data.time
+              );
+            });
+
+            this.socket.on("typing", (username) => {
+              this.typing = `${username} is typing...`;
+            });
+
+            this.socket.on("stopTyping", () => {
+              this.typing = "";
+            });
+
+            this.socket.on("roomUsers", (data) => {
+              this.users = data.users;
+            });
+          },
+
+          addMessage(user, text, time) {
+            this.messages.push({
+              id: Date.now(),
+              user: user,
+              text: text,
+              time: new Date(time).toLocaleTimeString(),
+              own: user === this.username,
+            });
+            this.$nextTick(() => {
+              let chatBox = document.getElementById("messages");
+              chatBox.scrollTop = chatBox.scrollHeight;
+            });
+          },
+
+          sendMessage() {
+            if (!this.newMessage.trim()) return;
+            this.socket.emit("chatMessage", this.newMessage);
+            this.newMessage = "";
+            this.socket.emit("stopTyping");
+          },
+
+          notifyTyping() {
+            this.socket.emit("typing");
+            setTimeout(() => {
+              this.socket.emit("stopTyping");
+            }, 3000);
+          },
+
+          uploadImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = () => {
+              this.socket.emit("sendImage", reader.result);
+            };
+            reader.readAsDataURL(file);
+          },
+
+          leaveRoom() {
+            if (this.socket) {
+              this.socket.emit("disconnectChat");
+              this.socket.disconnect();
+            }
+            this.joined = false;
+            this.room = "";
+            this.username = "";
+            this.messages = [];
+            this.users = [];
+          },
+        };
+      }
+    </script>
+  </body>
+</html>
